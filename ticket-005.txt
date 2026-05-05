@@ -1,0 +1,42 @@
+================================================================
+TICKET #005
+================================================================
+DATE:        5/5/2026
+REPORTED BY: Abel Valencia
+ISSUE TYPE:  System Time
+
+PROBLEM SUMMARY:
+System showing incorrect date and time. Standard time tools not available.
+
+SYMPTOMS OBSERVED:
+- "date" showed incorrect time
+- timedatectl: command not found
+- tlsdate: not available in repositories
+- ntpdate/ntpsec: not available
+
+TROUBLESHOOTING STEPS:
+1. Checked current time with "date"
+2. Attempted standard NTP tools - not available
+3. Installed fake-hwclock: sudo apt install fake-hwclock -y
+4. Ran fake-hwclock to save/restore time
+5. Verified time with "date"
+
+ALTERNATIVE APPROACH DOCUMENTED:
+- Manual time setting: sudo date -s "YYYY-MM-DD HH:MM:SS"
+
+ROOT CAUSE:
+Chromebook Linux container lacks a hardware clock (RTC) and standard systemd time tools.
+
+RESOLUTION:
+Installed fake-hwclock, which saves time between reboots. For immediate sync, used manual date setting.
+
+TOOLS USED:
+- date
+- apt
+- fake-hwclock
+
+ENVIRONMENT NOTE:
+Chromebook Linux containers do not have a real hardware clock. fake-hwclock is the recommended solution.
+
+STATUS: RESOLVED
+================================================================

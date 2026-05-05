@@ -1,0 +1,35 @@
+================================================================
+TICKET #004
+================================================================
+DATE:       5/5/2026
+REPORTED BY: Abel Valencia
+ISSUE TYPE:  Storage / Disk Space
+
+PROBLEM SUMMARY:
+User cannot save files. System reports "No space left on device."
+
+SYMPTOMS OBSERVED:
+- "df -h" showed disk usage increased significantly
+- Large file (bigfile) consuming 100MB of space
+
+TROUBLESHOOTING STEPS:
+1. Ran "df -h" to check overall disk usage
+2. Ran "du -sh ~" to find large files in home directory
+3. Located bigfile using "ls -lh"
+4. Removed file with "rm bigfile"
+5. Verified space recovered with "df -h"
+
+ROOT CAUSE:
+A large temporary file was consuming available storage.
+
+RESOLUTION:
+Deleted the unnecessary file using the rm command.
+
+TOOLS USED:
+- df (disk free)
+- du (disk usage)
+- ls -lh (list files with human-readable sizes)
+- rm (remove)
+
+STATUS: RESOLVED
+================================================================
