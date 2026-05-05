@@ -1,0 +1,55 @@
+========================================================
+============================
+TICKET #001
+========================================================
+============================
+DATE:		5/4/2026
+REPORTED BY:	Abel Valencia
+ISSUE TYPE: Network Connectivity
+
+PROBLEM SUMMARY:
+Netwrok interface was disabled,
+preventing internet access.
+
+SYMPTOMS OBSERVED:
+- Could not reach any websites
+- "ping: google.com: Temporary failure
+in name resolution" error
+- "ip addr show" showed no IP address
+assigned to eth0
+
+TROUBLESHOOTING STEPS:
+1. Re-enabled nework interface using:
+sudo ip link set eth0 up
+2. Checked for IP address using: ip
+addr show (still had no IP)
+3. Tried dhclient eth0 (command not
+found - deprecated)
+4. Installed and used dhcpcd: sudo apt
+install dhcpcd-base -y
+5. Ran: sudo dhcpcd eth0 (got new IP
+address)
+6. Manually set DNS: echo "nameserver
+8.8.8.8" | sudo tree /etc/resolv.conf
+7. Verfied with: ping google.com
+
+ROOT CAUSE:
+Network interface was manually
+disabled. After re-enabling, the DHCP
+client was missing and DNS settings
+were lost.
+
+RESOLUTION:
+Installed dhcpcd, renewed IP address,
+and manually configured DNS server.
+
+TOOLS USED:
+- ip command
+- dhcpcd
+-ping
+-tree
+- /etc/resolv.conf
+
+STATUS: RESOLVED
+======================================================
+=================================

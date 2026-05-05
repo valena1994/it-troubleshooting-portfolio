@@ -1,0 +1,40 @@
+================================================================
+TICKET #003
+================================================================
+DATE:        5/5/2026
+REPORTED BY: Abel Valencia
+ISSUE TYPE:  System Performance / Hung Process
+
+PROBLEM SUMMARY:
+User reported system running very slowly. Applications taking a long time to respond.
+
+SYMPTOMS OBSERVED:
+- General system sluggishness
+- High CPU usage shown in 'top' command
+- Multiple 'yes' processes consuming nearly 100% CPU
+
+TROUBLESHOOTING STEPS:
+1. Launched 'top' to identify CPU-hungry processes
+2. Observed three 'yes' processes at the top of the list
+3. Terminated all 'yes' processes using: pkill yes
+4. Re-ran 'top' to confirm CPU usage returned to normal
+5. Verified system responded normally
+
+ROOT CAUSE:
+Multiple background processes (yes commands) entered infinite loops, consuming all available CPU resources and leaving no processing power for other applications.
+
+RESOLUTION:
+Terminated the runaway processes using the pkill command. No reboot or additional fixes were required.
+
+TOOLS USED:
+- top (process monitoring)
+- pkill (bulk process termination)
+- & (background process operator)
+- /dev/null (output redirection)
+
+Note: On this system, killall was not pre-installed. Alternative solutions:
+- Installed psmisc package: sudo apt install psmisc -y
+- Or used pkill yes (already available)
+
+STATUS: RESOLVED
+================================================================

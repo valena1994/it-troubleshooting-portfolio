@@ -1,0 +1,39 @@
+================================================================
+TICKET #002
+================================================================
+DATE:        5/5/2026
+REPORTED BY: Abel Valencia
+ISSUE TYPE:  File Permissions
+
+PROBLEM SUMMARY:
+User cannot read or access a file, receiving "Permission denied" error.
+
+SYMPTOMS OBSERVED:
+- "cat secret.txt" returned: Permission denied
+- File was owned by root, not the user
+- File permissions showed 000 (no read/write/execute for anyone)
+
+TROUBLESHOOTING STEPS:
+1. Checked file ownership: ls -l secret.txt
+   - Showed "root root" as owner
+2. Checked current user: echo $USER
+3. Changed ownership to current user: sudo chown $USER:$USER secret.txt
+4. Changed permissions to allow read: sudo chmod 644 secret.txt
+5. Verified fix: cat secret.txt displayed file contents
+
+ROOT CAUSE:
+File ownership was changed to root with permissions set to 000, locking all users out.
+
+RESOLUTION:
+Restored file ownership to the original user and set standard read permissions (644).
+
+TOOLS USED:
+- ls -l (view permissions)
+- echo $USER (identify current user)
+- chown (change ownership)
+- chmod (change permissions)
+- cat (read file)
+
+STATUS: RESOLVED
+================================================================
+
