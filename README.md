@@ -1,7 +1,7 @@
 # IT Troubleshooting Portfolio
 
 ## About This Portfolio
-Three real-world IT support scenarios documented in professional ticket format. Each scenario includes symptoms, troubleshooting steps, root cause analysis, resolution, and tools used.
+Real-world IT support scenarios documented in professional ticket format. Each scenario includes symptoms, troubleshooting steps, root cause analysis, resolution, and tools used.
 
 ## Environment
 - Linux (Debian on Chromebook)
