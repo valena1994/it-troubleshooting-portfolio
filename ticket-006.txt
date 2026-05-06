@@ -1,0 +1,40 @@
+================================================================
+TICKET #010
+================================================================
+DATE:       5/5/2026
+REPORTED BY: Abel Valencia
+ISSUE TYPE:  DNS Resolution (Chromebook-specific)
+
+PROBLEM SUMMARY:
+DNS resolution failed despite correct nameserver entries in /etc/resolv.conf
+
+SYMPTOMS OBSERVED:
+- ping google.com → "Temporary failure in name resolution"
+- cat /etc/resolv.conf showed working nameservers (8.8.8.8, 8.8.4.4)
+- ping 8.8.8.8 worked (connectivity existed)
+- Standard DNS fixes did not resolve the issue
+
+TROUBLESHOOTING STEPS:
+1. Verified /etc/resolv.conf had correct nameservers
+2. Confirmed network connectivity via ping to 8.8.8.8
+3. Attempted manual DNS configuration – no change
+4. Researched Chromebook Linux container behavior
+5. Restarted Linux container (Terminal → Shut down Linux → relaunch)
+6. DNS resolved immediately after restart
+
+ROOT CAUSE:
+Chromebook Linux container's DNS resolver stack became stuck or cached invalid state. A full container restart flushed the resolver.
+
+RESOLUTION:
+Shut down and restarted the Linux container via Chromebook settings/terminal menu.
+
+TOOLS USED:
+- ping
+- cat
+- Chromebook Linux container management (shut down / restart)
+
+ENVIRONMENT NOTE:
+This is a known quirk of Chromebook's Linux (Beta) environment. Restarting the container is sometimes required to restore DNS functionality.
+
+STATUS: RESOLVED
+================================================================
