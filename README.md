@@ -16,6 +16,7 @@ Real-world IT support scenarios documented in professional ticket format. Each s
 | #003 | System slow / runaway process | top, killall/pkill |
 | #004 | Disk full / no space left | df, du, rm |
 | #005 | Wrong date/time | date, fake-hwclock, tlsdate (attempted) |
+| #006 | Chromebook DNS restart |
 
 ## Skills Demonstrated
 - Network troubleshooting (DNS, DHCP, interface management)
